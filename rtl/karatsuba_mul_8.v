@@ -19,7 +19,7 @@ assign A_l=A[p-1:0];
 assign A_h=A[m-1:p];
 assign B_l=B[p-1:0];
 assign B_h=B[m-1:p];
-// {B_h, B_l}=B;
+
 
 assign C2=A_h^A_l;
 assign C3=B_h^B_l;
