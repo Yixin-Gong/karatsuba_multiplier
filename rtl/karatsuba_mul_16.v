@@ -25,12 +25,12 @@ karatsuba_mul_8  M4 (.A(A1), .B(B1), .C(P3));//结果需移16位
 wire [n-1:0] th,tl,t1,t3;
 assign t1=P1<<8;
 assign t3=P3<<8;
-
+wire [n-1:0]th_shift = th << 8;
 wire coin1,coin2,coin3;
 
 add_32 ADD0 (.a({16'b0,P0}), .b(t1), .sum(tl), .in(1'b0), .coin(coin1));
 add_32 ADD1 (.a({16'b0,P2}), .b(t3), .sum(th), .in(1'b0), .coin(coin2));
-add_64 ADD2 (.a({th,8'b0}), .b(tl),  .sum(C),  .in(1'b0), .coin(coin3));
+add_32 ADD2 (.a(th_shift), .b(tl),  .sum(C),  .in(1'b0), .coin(coin3));
 
 endmodule
 
